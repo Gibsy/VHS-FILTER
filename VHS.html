@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VHS filter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="wrap">
+  <div id="crt-outer">
+    <canvas id="c" width="640" height="360"></canvas>
+    <div id="scanline-css"></div>
+    <div id="glass"></div>
+    <div id="dropzone">
+      <div class="icon">▼</div>
+      drop photo or video here
+    </div>
+  </div>
+</div>
+
+<div id="controls">
+  <div class="ctrl"><label>tracking</label><input type="range" id="s_track" min="0" max="100" value="30"></div>
+  <div class="ctrl"><label>chroma</label><input type="range" id="s_chroma" min="0" max="30" value="4"></div>
+  <div class="ctrl"><label>flicker</label><input type="range" id="s_flicker" min="0" max="100" value="20"></div>
+  <div class="ctrl"><label>fog</label><input type="range" id="s_fog" min="0" max="100" value="25"></div>
+  <div class="ctrl"><label>glitch</label><input type="range" id="s_glitch" min="0" max="100" value="15"></div>
+  <div class="ctrl"><label>vignette</label><input type="range" id="s_vig" min="0" max="100" value="65"></div>
+  <div class="ctrl"><label>phosphor</label><input type="range" id="s_phos" min="0" max="100" value="40"></div>
+  <div class="ctrl"><label>h-sync</label><input type="range" id="s_hsync" min="0" max="100" value="20"></div>
+  <div class="ctrl"><label>subpixels</label><input type="checkbox" id="s_rgb"></div>
+  <div class="ctrl"><label>film grain</label><input type="checkbox" id="s_film" checked></div>
+  <div class="ctrl"><label>timestamp</label><input type="checkbox" id="s_date" checked></div>
+</div>
+<div id="bar">
+  <span id="timestamp">REC ● 00:00:00  SP  T-120</span>
+</div>
+<div id="vid-controls">
+  <button id="btn-play">play</button>
+  <button id="btn-mute">mute</button>
+  <input type="range" id="vid-seek" min="0" max="100" value="0" step="0.1">
+  <span id="vid-time" style="font-size:11px;color:#444;min-width:80px">0:00 / 0:00</span>
+</div>
+
+<script src="VHS.js"></script>
+</body>
+</html>
