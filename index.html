@@ -13,33 +13,75 @@
     <div id="scanline-css"></div>
     <div id="glass"></div>
     <div id="dropzone">
-      <div class="icon">▼</div>
-      drop photo or video here
+      <div class="dz-icon">&#9660;</div>
+      <div>drop photo or video here</div>
+      <div class="dz-btns">
+        <button class="dz-btn" id="btn-file">open file</button>
+        <button class="dz-btn" id="btn-webcam">webcam</button>
+      </div>
+      <div class="dz-hint">jpg &middot; png &middot; mp4 &middot; webm &middot; mov</div>
     </div>
   </div>
 </div>
-
-<div id="controls">
-  <div class="ctrl"><label>tracking</label><input type="range" id="s_track" min="0" max="100" value="30"></div>
-  <div class="ctrl"><label>chroma</label><input type="range" id="s_chroma" min="0" max="30" value="4"></div>
-  <div class="ctrl"><label>flicker</label><input type="range" id="s_flicker" min="0" max="100" value="20"></div>
-  <div class="ctrl"><label>fog</label><input type="range" id="s_fog" min="0" max="100" value="25"></div>
-  <div class="ctrl"><label>glitch</label><input type="range" id="s_glitch" min="0" max="100" value="15"></div>
-  <div class="ctrl"><label>vignette</label><input type="range" id="s_vig" min="0" max="100" value="65"></div>
-  <div class="ctrl"><label>phosphor</label><input type="range" id="s_phos" min="0" max="100" value="40"></div>
-  <div class="ctrl"><label>h-sync</label><input type="range" id="s_hsync" min="0" max="100" value="20"></div>
-  <div class="ctrl"><label>subpixels</label><input type="checkbox" id="s_rgb"></div>
-  <div class="ctrl"><label>film grain</label><input type="checkbox" id="s_film" checked></div>
-  <div class="ctrl"><label>timestamp</label><input type="checkbox" id="s_date" checked></div>
+ 
+<div id="toolbar">
+  <div id="toolbar-left">
+    <button class="tb-btn" id="btn-source">source</button>
+    <button class="tb-btn" id="btn-record">rec</button>
+    <span id="rec-timer">00:00</span>
+    <button class="tb-btn" id="btn-snap">snapshot</button>
+  </div>
+  <div id="toolbar-right">
+    <button class="tb-btn" id="btn-43">4:3</button>
+    <button class="tb-btn" id="btn-settime">set time</button>
+    <button class="tb-btn" id="btn-fs">fullscreen</button>
+  </div>
 </div>
+ 
 <div id="bar">
-  <span id="timestamp">REC ● 00:00:00  SP  T-120</span>
+  <span id="timestamp">REC &#9679;  00:00:00  SP  T-120</span>
+  <span id="bar-status"></span>
 </div>
+ 
+<div id="timepanel">
+  <span>date</span>
+  <input type="text" id="tp-date" placeholder="DD.MM.YYYY" maxlength="10">
+  <span>time</span>
+  <input type="text" id="tp-time" placeholder="HH:MM:SS" maxlength="8">
+  <button id="tp-set">set</button>
+  <button id="tp-reset">reset to system</button>
+  <span class="tp-hint" id="tp-status">system time active</span>
+</div>
+ 
+<div id="controls">
+  <div class="ctrl"><label>tracking</label> <input type="range" id="s_track"   min="0" max="100" value="30"></div>
+  <div class="ctrl"><label>chroma</label>   <input type="range" id="s_chroma"  min="0" max="30"  value="4"></div>
+  <div class="ctrl"><label>flicker</label>  <input type="range" id="s_flicker" min="0" max="100" value="20"></div>
+  <div class="ctrl"><label>fog</label>      <input type="range" id="s_fog"     min="0" max="100" value="25"></div>
+  <div class="ctrl"><label>glitch</label>   <input type="range" id="s_glitch"  min="0" max="100" value="15"></div>
+  <div class="ctrl"><label>vignette</label> <input type="range" id="s_vig"     min="0" max="100" value="65"></div>
+  <div class="ctrl"><label>phosphor</label> <input type="range" id="s_phos"    min="0" max="100" value="40"></div>
+  <div class="ctrl"><label>h-sync</label>   <input type="range" id="s_hsync"   min="0" max="100" value="20"></div>
+  <div class="ctrl"><label>volume</label>    <input type="range" id="vid-vol"  min="0" max="100" value="80"></div>
+  <div class="ctrl"><label>subpixels</label> <input type="checkbox" id="s_rgb"></div>
+  <div class="ctrl"><label>film grain</label><input type="checkbox" id="s_film" checked></div>
+  <div class="ctrl"><label>timestamp</label> <input type="checkbox" id="s_date" checked></div>
+  <div class="ctrl"><label>sound fx</label>  <input type="checkbox" id="s_sound" checked></div>
+</div>
+ 
+<div id="presets">
+  <span class="pre-label">presets</span>
+  <div class="preset-slot" id="slot-0"><button class="load-btn" data-slot="0">A</button><button class="save-btn" data-slot="0">x</button></div>
+  <div class="preset-slot" id="slot-1"><button class="load-btn" data-slot="1">B</button><button class="save-btn" data-slot="1">x</button></div>
+  <div class="preset-slot" id="slot-2"><button class="load-btn" data-slot="2">C</button><button class="save-btn" data-slot="2">x</button></div>
+  <div class="preset-slot" id="slot-3"><button class="load-btn" data-slot="3">D</button><button class="save-btn" data-slot="3">x</button></div>
+</div>
+ 
 <div id="vid-controls">
   <button id="btn-play">play</button>
   <button id="btn-mute">mute</button>
   <input type="range" id="vid-seek" min="0" max="100" value="0" step="0.1">
-  <span id="vid-time" style="font-size:11px;color:#444;min-width:80px">0:00 / 0:00</span>
+  <span id="vid-time">0:00 / 0:00</span>
 </div>
 
 <script src="VHS.js"></script>
